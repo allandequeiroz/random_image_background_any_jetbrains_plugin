@@ -1,0 +1,43 @@
+<idea-plugin>
+    <id>io.allandequeiroz.random.image.background</id>
+    <name>Random Image Background</name>
+    <version>1.0.0</version>
+    <vendor email="allandequeiroz@gmail.com" url="http://allandequeiroz.io">Allan de Queiroz</vendor>
+
+    <description><![CDATA[
+      Set the editor background to a random picture from a folder.<br>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Added settings page<br>
+      Added menu items
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="162"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+
+    <!-- uncomment to enable plugin in all products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable groupId="appearance" groupWeight="20" id="random.image.background"
+                                 displayName="Random Image Background"
+                                 instance="io.allandequeiroz.random.image.background.ui.Settings"/>
+    </extensions>
+
+    <actions>
+        <group id="randomImageBackground" text="Random Image Background" description="Random Image Background">
+            <action id="setBackgroundImage" class="org.intellij.images.editor.actions.SetBackgroundImageAction"
+                    text="Set Background Image"/>
+            <action id="randomBackgroundImage" class="io.allandequeiroz.random.image.background.RandomBackground"
+                    text="Random Background Image"/>
+            <action id="clearBackgroundImage" class="io.allandequeiroz.random.image.background.ClearBackground"
+                    text="Clear Background Image"/>
+        </group>
+    </actions>
+
+</idea-plugin>
