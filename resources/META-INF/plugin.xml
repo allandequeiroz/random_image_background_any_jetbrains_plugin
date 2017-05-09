@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.allandequeiroz.random.image.background</id>
     <name>Random Image Background</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <vendor email="allandequeiroz@gmail.com" url="http://allandequeiroz.io">Allan de Queiroz</vendor>
 
     <description><![CDATA[
@@ -9,8 +9,14 @@
     ]]></description>
 
     <change-notes><![CDATA[
-      Added settings page<br>
-      Added menu items
+      Inclusion of "Time (seconds)" configuration to randomize images periodically.
+
+      Usage:
+      Settings -> Appearance & Behaviour -> Random Image Background
+        - Set the folder (recursive) to pull random background images from
+        - Set the time to change between images (seconds)
+
+      To disable the random behaviour, let Time (seconds) empty
     ]]>
     </change-notes>
 
