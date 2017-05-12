@@ -21,11 +21,13 @@ public class Settings implements Configurable {
 
    public static final String FOLDER = "BackgroundImagesFolder";
    public static final String TIME_EXECUTION = "BackgroundImagesTimeExecution";
+   public static final String OPACITY = "BackgroundImagesOpacity";
 
    private JTextField imageFolder;
    private JPanel rootPanel;
    private JButton chooser;
    private JTextField timeExecution;
+   private JSlider opacity;
 
    @Nls
    @Override
@@ -68,8 +70,12 @@ public class Settings implements Configurable {
       PropertiesComponent prop = PropertiesComponent.getInstance();
       String storedFolder = prop.getValue(FOLDER);
       String storedTimeExecution = prop.getValue(TIME_EXECUTION);
+      int storedOpacity = getStoredOpacity(prop);
+
       String uiFolder = imageFolder.getText();
       String uiTimeExecution = timeExecution.getText();
+      int uiOpacity = opacity.getValue();
+
       if (storedFolder == null) {
          storedFolder = "";
       }
@@ -77,7 +83,17 @@ public class Settings implements Configurable {
          storedTimeExecution = "";
       }
 
-      return !storedFolder.equals(uiFolder) || !storedTimeExecution.equals(uiTimeExecution);
+      return !storedFolder.equals(uiFolder) || !storedTimeExecution.equals(uiTimeExecution) || storedOpacity != uiOpacity;
+   }
+
+   public static int getStoredOpacity(PropertiesComponent prop) {
+      String storedOpacity = prop.getValue(OPACITY);
+      try {
+         return Integer.valueOf(storedOpacity);
+      } catch (NumberFormatException e) {
+         //No problem here, we have no previous value
+      }
+      return 50;
    }
 
    @Override
@@ -88,6 +104,9 @@ public class Settings implements Configurable {
       String timeExecutionValue = timeExecution.getText();
       prop.setValue(TIME_EXECUTION, timeExecutionValue);
 
+      int opcity = opacity.getValue();
+      prop.setValue(OPACITY, String.valueOf(opcity));
+
       ScheduledExecutorServiceHandler.shutdownExecution();
       ActionManager.getInstance().getAction("randomBackgroundImage").actionPerformed(null);
    }
@@ -95,10 +114,14 @@ public class Settings implements Configurable {
    @Override
    public void reset() {
       PropertiesComponent prop = PropertiesComponent.getInstance();
+      int storedOpacity = getStoredOpacity(prop);
+      opacity.setValue(storedOpacity);
       imageFolder.setText(prop.getValue(FOLDER));
       timeExecution.setText(prop.getValue(TIME_EXECUTION));
+
    }
 
    @Override
-   public void disposeUIResources() {}
+   public void disposeUIResources() {
+   }
 }

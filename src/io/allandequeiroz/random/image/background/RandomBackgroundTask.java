@@ -37,9 +37,10 @@ class RandomBackgroundTask implements Runnable {
          NotificationCenter.notice("No image found");
          return;
       }
-      // notice("Setting image to: " + image);
+      String storedOpacity = prop.getValue(Settings.OPACITY);
+      String ideaBackgroundImage = String.format("%s,%s",image,storedOpacity);
       prop.setValue(IdeBackgroundUtil.FRAME_PROP, null);
-      prop.setValue(IdeBackgroundUtil.EDITOR_PROP, image);
+      prop.setValue(IdeBackgroundUtil.EDITOR_PROP, ideaBackgroundImage);
       IdeBackgroundUtil.repaintAllWindows();
    }
 
