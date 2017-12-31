@@ -22,12 +22,14 @@ public class Settings implements Configurable {
    public static final String FOLDER = "BackgroundImagesFolder";
    public static final String TIME_EXECUTION = "BackgroundImagesTimeExecution";
    public static final String OPACITY = "BackgroundImagesOpacity";
+   public static final String DISABLED = "BackgroundImagesDisabled";
 
    private JTextField imageFolder;
    private JPanel rootPanel;
    private JButton chooser;
    private JTextField timeExecution;
    private JSlider opacity;
+   private JCheckBox disabled;
 
    @Nls
    @Override
@@ -71,10 +73,12 @@ public class Settings implements Configurable {
       String storedFolder = prop.getValue(FOLDER);
       String storedTimeExecution = prop.getValue(TIME_EXECUTION);
       int storedOpacity = getStoredOpacity(prop);
+      boolean storedDisabledOption = prop.getBoolean(DISABLED);
 
       String uiFolder = imageFolder.getText();
       String uiTimeExecution = timeExecution.getText();
       int uiOpacity = opacity.getValue();
+      boolean isDisabled = disabled.isSelected();
 
       if (storedFolder == null) {
          storedFolder = "";
@@ -83,7 +87,7 @@ public class Settings implements Configurable {
          storedTimeExecution = "";
       }
 
-      return !storedFolder.equals(uiFolder) || !storedTimeExecution.equals(uiTimeExecution) || storedOpacity != uiOpacity;
+      return !storedFolder.equals(uiFolder) || !storedTimeExecution.equals(uiTimeExecution) || storedOpacity != uiOpacity || storedDisabledOption != isDisabled;
    }
 
    public static int getStoredOpacity(PropertiesComponent prop) {
@@ -107,8 +111,16 @@ public class Settings implements Configurable {
       int opcity = opacity.getValue();
       prop.setValue(OPACITY, String.valueOf(opcity));
 
+      boolean isDisabled = disabled.isSelected();
+      prop.setValue(DISABLED, isDisabled);
+
       ScheduledExecutorServiceHandler.shutdownExecution();
-      ActionManager.getInstance().getAction("randomBackgroundImage").actionPerformed(null);
+
+      if(isDisabled) {
+         ActionManager.getInstance().getAction("clearBackgroundImage").actionPerformed(null);
+      }else {
+         ActionManager.getInstance().getAction("randomBackgroundImage").actionPerformed(null);
+      }
    }
 
    @Override
@@ -118,7 +130,7 @@ public class Settings implements Configurable {
       opacity.setValue(storedOpacity);
       imageFolder.setText(prop.getValue(FOLDER));
       timeExecution.setText(prop.getValue(TIME_EXECUTION));
-
+      disabled.setSelected(prop.getBoolean(DISABLED));
    }
 
    @Override

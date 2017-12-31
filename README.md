@@ -6,4 +6,4 @@ Settings -> Appearance & Behaviour -> Random Image Background
 - Set the folder (recursive) to pull random background images from
 - Set the time to change between images (seconds)
 
-To disable the random behaviour, let Time (seconds) empty
+To disable the random behaviour, let Time (seconds) empty or to fully disable check the Disabled option

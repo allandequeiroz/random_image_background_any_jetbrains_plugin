@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.allandequeiroz.random.image.background</id>
     <name>Random Image Background</name>
-    <version>1.0.1</version>
+    <version>1.2.1</version>
     <vendor email="allandequeiroz@gmail.com" url="http://allandequeiroz.io">Allan de Queiroz</vendor>
 
     <description><![CDATA[
@@ -19,7 +19,7 @@
         &nbsp;&nbsp;&nbsp;--Left to dark<br/>
         &nbsp;&nbsp;&nbsp;--Right to light<br/><br/>
 
-      To disable the random behaviour, let Time (seconds) empty <br/>
+      To disable the random behaviour, let Time (seconds) empty or to fully disable check the Disabled option<br/>
     ]]>
     </change-notes>
 
