@@ -1,27 +1,8 @@
 <idea-plugin>
-    <id>io.allandequeiroz.random.image.background</id>
+    <id>com.allandequeiroz.random.image.background</id>
     <name>Random Image Background</name>
-    <version>1.2.1</version>
-    <vendor email="allandequeiroz@gmail.com" url="http://allandequeiroz.io">Allan de Queiroz</vendor>
-
-    <description><![CDATA[
-      Set the editor background to a random picture from a folder.<br>
-    ]]></description>
-
-    <change-notes><![CDATA[
-      Inclusion of opacity control.
-      <br/><br/>
-      -- Usage: <br/>
-      Settings -> Appearance & Behaviour -> Random Image Background <br/>
-        -- Set the folder (recursive) to pull random background images from <br/>
-        -- Set the time to change between images (seconds) <br/>
-        -- Set the opacity <br/>
-        &nbsp;&nbsp;&nbsp;--Left to dark<br/>
-        &nbsp;&nbsp;&nbsp;--Right to light<br/><br/>
-
-      To disable the random behaviour, let Time (seconds) empty or to fully disable check the Disabled option<br/>
-    ]]>
-    </change-notes>
+    <version>2.0.0</version>
+    <vendor email="allan@queiroz.house" url="https://github.com/allandequeiroz">Allan de Queiroz</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="162"/>
@@ -35,16 +16,16 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="appearance" groupWeight="20" id="random.image.background"
                                  displayName="Random Image Background"
-                                 instance="io.allandequeiroz.random.image.background.ui.Settings"/>
+                                 instance="com.allandequeiroz.random.image.background.ui.Settings"/>
+        <postStartupActivity implementation="com.allandequeiroz.random.image.background.ui.Settings"/>
     </extensions>
 
     <actions>
-        <group id="randomImageBackground" text="Random Image Background" description="Random Image Background">
-            <action id="setBackgroundImage" class="org.intellij.images.editor.actions.SetBackgroundImageAction"
-                    text="Set Background Image"/>
-            <action id="randomBackgroundImage" class="io.allandequeiroz.random.image.background.RandomBackground"
+        <group id="randomImageBackground" text="Random Image Background" description="Random image background">
+            <action id="randomBackgroundImage"
+                    class="com.allandequeiroz.random.image.background.RandomBackgroundManager"
                     text="Random Background Image"/>
-            <action id="clearBackgroundImage" class="io.allandequeiroz.random.image.background.ClearBackground"
+            <action id="clearBackgroundImage" class="com.allandequeiroz.random.image.background.ClearBackground"
                     text="Clear Background Image"/>
         </group>
     </actions>
