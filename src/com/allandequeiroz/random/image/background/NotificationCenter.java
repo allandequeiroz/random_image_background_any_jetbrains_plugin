@@ -7,7 +7,7 @@ import com.intellij.notification.Notifications;
 /** Author: Allan de Queiroz */
 public class NotificationCenter {
 
-  private static final String MESSAGE_PREFIX = "[Random Background]";
+  private static final String MESSAGE_PREFIX = "[Random Image Background]";
 
   public static void notify(final String message) {
     final Notification n =
