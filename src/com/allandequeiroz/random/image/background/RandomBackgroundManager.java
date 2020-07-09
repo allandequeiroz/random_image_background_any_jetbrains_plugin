@@ -54,8 +54,8 @@ public class RandomBackgroundManager extends AnAction {
           RandomBackgroundTask.Builder.createTask().withProp(prop).build();
       final Project defaultProject = ProjectManager.getInstance().getDefaultProject();
       WriteCommandAction.runWriteCommandAction(defaultProject, task);
-    } catch (final Exception ex) {
-      NotificationCenter.notify(ex.getMessage());
+    } catch (final Exception e) {
+      NotificationCenter.error(e.getMessage(), e);
     }
   }
 

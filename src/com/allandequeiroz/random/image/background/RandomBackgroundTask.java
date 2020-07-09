@@ -28,7 +28,7 @@ class RandomBackgroundTask implements Runnable {
         return;
       }
       if (Files.notExists(Paths.get(folder))) {
-        NotificationCenter.notify("Image folder not set");
+        NotificationCenter.notify("Image folder doesn't exists");
         return;
       }
       final String image = imagesHandler.getRandomImage(folder);

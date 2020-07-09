@@ -2,8 +2,9 @@ package com.allandequeiroz.random.image.background;
 
 import org.apache.commons.lang.StringUtils;
 
-import javax.activation.MimetypesFileTypeMap;
+import java.io.File;
 import java.io.IOException;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,12 +16,6 @@ import java.util.stream.Collectors;
 
 /** Author: Allan de Queiroz */
 class ImagesHandler {
-
-  private final MimetypesFileTypeMap typeMap;
-
-  public ImagesHandler() {
-    typeMap = new MimetypesFileTypeMap();
-  }
 
   public String getRandomImage(final String folder) {
     if (StringUtils.isEmpty(folder)) {
@@ -43,13 +38,19 @@ class ImagesHandler {
           .filter(this::isImage)
           .collect(Collectors.toList());
     } catch (final IOException e) {
-      NotificationCenter.notify(e.getMessage());
+      NotificationCenter.error(e.getMessage(), e);
     }
     return Collections.emptyList();
   }
 
-  private boolean isImage(final String file) {
-    final String[] parts = typeMap.getContentType(file).split("/");
-    return parts.length != 0 && parts[0].equals("image");
+  private boolean isImage(final String filePath) {
+    try {
+      final File file = new File(filePath);
+      final URLConnection connection = file.toURI().toURL().openConnection();
+      return connection.getContentType().startsWith("image");
+    } catch (final IOException e) {
+      NotificationCenter.error(e.getMessage(), e);
+    }
+    return false;
   }
 }

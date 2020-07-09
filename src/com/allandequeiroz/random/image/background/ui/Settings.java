@@ -1,15 +1,12 @@
 package com.allandequeiroz.random.image.background.ui;
 
-import com.allandequeiroz.random.image.background.NotificationCenter;
 import com.allandequeiroz.random.image.background.RandomBackgroundManager;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginStateListener;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.options.Configurable;
-import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.impl.ProjectManagerImpl;
 import com.intellij.openapi.startup.StartupActivity;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.Nls;
@@ -21,8 +18,7 @@ import java.io.File;
 import java.util.Optional;
 
 /** Author: Allan de Queiroz */
-public class Settings extends ProjectManagerImpl
-    implements Configurable, StartupActivity, DumbAware {
+public class Settings implements Configurable, StartupActivity {
 
   public static final int DEFAULT_TIME_EXECUTION = 300;
 
@@ -99,9 +95,7 @@ public class Settings extends ProjectManagerImpl
     com.intellij.ide.plugins.PluginInstaller.addStateListener(
         new PluginStateListener() {
           @Override
-          public void install(@NotNull final IdeaPluginDescriptor ideaPluginDescriptor) {
-            NotificationCenter.notify("Plugin installation notification");
-          }
+          public void install(@NotNull final IdeaPluginDescriptor ideaPluginDescriptor) {}
 
           @Override
           public void uninstall(@NotNull final IdeaPluginDescriptor ideaPluginDescriptor) {
@@ -126,6 +120,8 @@ public class Settings extends ProjectManagerImpl
   }
 
   private void enable() {
+    ((RandomBackgroundManager) ActionManager.getInstance().getAction("randomBackgroundImage"))
+        .shutdown();
     ActionManager.getInstance().getAction("randomBackgroundImage").actionPerformed(null);
   }
 

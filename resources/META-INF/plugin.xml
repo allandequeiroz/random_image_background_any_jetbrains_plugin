@@ -1,11 +1,11 @@
 <idea-plugin>
-    <id>com.allandequeiroz.random.image.background</id>
-    <name>Random Image Background</name>
-    <version>2.0.0</version>
+    <id>io.allandequeiroz.random.image.background</id>
+    <name>Random Background</name>
+    <version>2.1.4</version>
     <vendor email="allan@queiroz.house" url="https://github.com/allandequeiroz">Allan de Queiroz</vendor>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="191.0"/>
+    <idea-version since-build="162"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -58,13 +58,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="appearance" groupWeight="20" id="random.image.background"
-                                 displayName="Random Image Background"
+                                 displayName="Random Background"
                                  instance="com.allandequeiroz.random.image.background.ui.Settings"/>
         <postStartupActivity implementation="com.allandequeiroz.random.image.background.ui.Settings"/>
     </extensions>
 
     <actions>
-        <group id="randomImageBackground" text="Random Image Background" description="Random Image Background">
+        <group id="randomImageBackground" text="Random Background" description="Random Background">
             <action id="randomBackgroundImage"
                     class="com.allandequeiroz.random.image.background.RandomBackgroundManager"
                     text="RandomF Background Image"/>
