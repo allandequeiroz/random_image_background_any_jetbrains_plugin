@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.allandequeiroz.random.image.background</id>
-    <name>Random Image Background</name>
+    <name>Random Background</name>
     <version>2.0.0</version>
     <vendor email="allan@queiroz.house" url="https://github.com/allandequeiroz">Allan de Queiroz</vendor>
 
@@ -15,16 +15,16 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="appearance" groupWeight="20" id="random.image.background"
-                                 displayName="Random Image Background"
+                                 displayName="Random Background"
                                  instance="com.allandequeiroz.random.image.background.ui.Settings"/>
         <postStartupActivity implementation="com.allandequeiroz.random.image.background.ui.Settings"/>
     </extensions>
 
     <actions>
-        <group id="randomImageBackground" text="Random Image Background" description="Random image background">
+        <group id="randomImageBackground" text="Random Background" description="Random Background">
             <action id="randomBackgroundImage"
                     class="com.allandequeiroz.random.image.background.RandomBackgroundManager"
-                    text="Random Background Image"/>
+                    text="RandomF Background Image"/>
             <action id="clearBackgroundImage" class="com.allandequeiroz.random.image.background.ClearBackground"
                     text="Clear Background Image"/>
         </group>

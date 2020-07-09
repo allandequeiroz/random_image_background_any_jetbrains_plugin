@@ -1,8 +1,8 @@
-# Random Image Background
+# Random Background
 
 ### Settings
 
-Settings -> Appearance & Behaviour -> Random Image Background  
+Settings -> Appearance & Behaviour -> Random Background  
 - Set the folder (recursive) to pull random background images from
 - Set the time to change between images (seconds)
 
