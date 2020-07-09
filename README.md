@@ -1,9 +1,16 @@
-# Random Background
+Give some personal touch to your IDE with background images randomly picked from a directory of your choice.
 
-### Settings
+The usage is quite straight forward, set two parameters, tweak the third one, and you're ready to go.
+![](https://github.com/allandequeiroz/random_image_background_any_jetbrains_plugin/blob/master/resources/images/screenshot_16985.png?raw=true)
 
-Settings -> Appearance & Behaviour -> Random Background  
-- Set the folder (recursive) to pull Random Background images from
-- Set the time to change between images (seconds)
+## Overview
 
-To disable the random behaviour, let Time (seconds) empty or to fully disable check the Disabled option
+Let's start with a quick explanation about each of the fields
+* Image folder: The folder containing the images to be used as background.
+* Time (seconds): The timeframe that each image will remain visible before being replaced by the next one.
+* Opacity: The IDE opacity (transparency) over the background image. Darker to the left, lighter to the right.
+* Disabled: If you want to disable the background change features without uninstalling the plugin, disable it. If you change your mind, enable it again.
+
+## Overview
+
+![](https://github.com/allandequeiroz/random_image_background_any_jetbrains_plugin/blob/master/resources/images/screenshot_16968.png?raw=true)
