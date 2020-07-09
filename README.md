@@ -13,4 +13,4 @@ Let's start with a quick explanation about each of the fields
 
 ## Overview
 
-![](https://github.com/allandequeiroz/random_image_background_any_jetbrains_plugin/blob/master/resources/images/screenshot_16968.png?raw=true)
+![](https://github.com/allandequeiroz/random_image_background_any_jetbrains_plugin/blob/master/resources/images/screenshot_16968.png?raw=true")
